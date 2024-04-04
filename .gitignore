@@ -1,1 +1,7 @@
 node_modules/
+.vscode/
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
