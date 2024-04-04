@@ -1,30 +1,50 @@
-<div style="text-align: center;">
-  <div>
-    <h1 style="text-align: center;">Password Generator App</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
+
+      <div class="field">
+        <label>Length</label>
+        <input class="input" (input)="onChangeLength($event)" />
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseLetters()" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseNums()" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseSymbols()" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+
+      <button [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        " (click)="onButtonClick()" class="button is-link is-fullwidth">
+        Generate!
+      </button>
+
+      <div class="box" *ngIf="password">
+        <label>Your Password</label>
+        <input class="input" [value]="password" />
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="passwordLength">
-      <input type="text" name="passwordLength">
-    </label>
-  </div>
-  <div>
-    <label for="useNumber">
-      <input type="checkbox" name="useNumber"> Use Numbers?
-    </label>
-  </div>
-  <div>
-    <label for="useSymbol">
-      <input type="checkbox" name="useSymbol"> Use Symbols?
-    </label>
-  </div>
-  <div>
-    <label for="useLetters">
-      <input type="checkbox" name="useLetters"> Use Letters?
-    </label>
-  </div>
-  <div>
-    <button (click)="onButtonClick()"> Generate Password! </button>
-  </div>
-  <div><label>Generated Password -> <input type="text" [value]="getPassword()"></label></div>
-  <h2>{{getPassword()}}</h2>
 </div>
